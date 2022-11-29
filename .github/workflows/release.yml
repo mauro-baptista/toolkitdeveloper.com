@@ -52,6 +52,7 @@ jobs:
         run: |
           npm install serverless -g
           npm install serverless-lift -g
+          npm install serverless-deployment-bucket -g
 
       - name: Composer install
         run: composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev

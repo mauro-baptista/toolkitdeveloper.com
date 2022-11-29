@@ -11,6 +11,8 @@ provider:
       Role: "lambda deploy"
       Project: self:service
       Environment: ${opt:stage, self:provider.stage}
+    deploymentBucket:
+      name: toolkitdeveloper.com
 
 custom:
     stage: ${opt:stage, self:provider.stage}
@@ -19,7 +21,6 @@ custom:
     artisan: ${self:custom.prefix}-artisan
 
 package:
-    # Directories to exclude from deployment
     patterns:
         - '!node_modules/**'
         - '!public/storage'
@@ -44,9 +45,9 @@ functions:
         handler: artisan
         timeout: 120 # in seconds
         layers:
-            - ${bref:layer.php-81} # PHP
-            - ${bref:layer.console} # The "console" layer
+            - ${bref:layer.php-81}
+            - ${bref:layer.console}
 
 plugins:
-    # We need to include the Bref plugin
     - ./vendor/bref/bref
+    - serverless-deployment-bucket
