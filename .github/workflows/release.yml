@@ -48,6 +48,10 @@ jobs:
           npm install
           npm run build
 
+      - name: Copy assets to CDN
+        run: |
+          aws s3 cp ./public/build s3://${{ env.PROJECT }}/cdn/build --recursive --acl public-read
+
       - name: Install Serverlesss
         run: |
           npm install serverless -g
