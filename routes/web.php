@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::inertia('/', 'HomePage', [
     'tools' => config('tools'),
