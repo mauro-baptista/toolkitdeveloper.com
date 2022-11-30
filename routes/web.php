@@ -1,21 +1,16 @@
 <?php
 
-use App\Http\Controllers\Tools;
+use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => 'INDEX');
-
 
 Route::group([
     'prefix' => 'tools/',
     'as' => 'tools.',
 ], function () {
-
-    Route::group([
-        'prefix' => 'slugify',
-        'as' => 'slugify.'
-    ], function () {
-        Route::inertia('/', 'Tools/Slugify')->name('page');
-        Route::post('/', Tools\SlugifyController::class)->name('handler');
-    });
+    foreach (config('tools') as $tool => $data) {
+        Route::inertia('/' . $tool, $data['component'])->name($tool);
+    }
+    Route::post('/{tool}', ToolController::class)->name('handler');
 });

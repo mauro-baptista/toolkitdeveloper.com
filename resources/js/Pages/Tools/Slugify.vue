@@ -15,7 +15,6 @@
                 <SubmitButton text="Generate" class="mt-8 w-full md:w-128" />
             </form>
 
-
             <BlockCopy
                 v-if="slug"
                 class="mt-8"
@@ -48,6 +47,6 @@
     })
 
     function submit() {
-        form.post(route('tools.slugify.handler'))
+        form.post(route('tools.handler', {tool: 'slugify'}))
     }
 </script>
