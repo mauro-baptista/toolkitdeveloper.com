@@ -3,7 +3,9 @@
 use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => 'INDEX');
+Route::inertia('/', 'HomePage', [
+    'tools' => config('tools'),
+]);
 
 Route::group([
     'prefix' => 'tools/',
