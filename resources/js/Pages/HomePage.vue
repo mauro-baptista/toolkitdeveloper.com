@@ -1,5 +1,10 @@
 <template>
     <Layout>
+        <Head>
+            <title>Toolkit developer</title>
+            <meta name="description" content="A set of useful tools to help the developer life">
+        </Head>
+
         <div class="divide-y divide-gray-200 overflow-hidden sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
             <div v-for="(data, tool) in tools" :key="tool" class="relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
                 <div class="mt-0">
@@ -24,7 +29,7 @@
 
 <script setup lang="ts">
     import Layout from "../Common/Layout.vue"
-    import { Link } from '@inertiajs/inertia-vue3'
+    import { Link, Head } from '@inertiajs/inertia-vue3'
 
     interface Props {
         tools: object,

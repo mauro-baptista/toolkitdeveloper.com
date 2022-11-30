@@ -1,5 +1,10 @@
 <template>
     <Layout>
+        <Head>
+            <title>Toolkit developer - Slugify</title>
+            <meta name="description" content="Easy and straight-forward tool to generate user friendly URL slugs">
+        </Head>
+
         <Block
             header="Slugify"
             description="Easy and straight-forward tool to generate user friendly URL slugs"
@@ -35,6 +40,7 @@
     import BlockCopy from "../../Common/BlockCopy.vue"
     import InputText from "../../Common/Form/InputText.vue"
     import SubmitButton from "../../Common/Form/SubmitButton.vue"
+    import { Head } from '@inertiajs/inertia-vue3'
 
     interface Props {
         slug?: String,
