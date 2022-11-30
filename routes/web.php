@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::inertia('/', 'HomePage', [
     'tools' => config('tools'),
-]);
+])->name('homepage');
 
 Route::group([
     'prefix' => 'tools/',
