@@ -3,18 +3,13 @@
 namespace App\Tools\Slugify;
 
 use App\Tools\ValidationContract;
-use Illuminate\Support\Facades\Validator;
 
-class Validation implements ValidationContract
+class Validation extends ValidationContract
 {
-    public function validate(array $request): array
+    protected function rules(): array
     {
-        $validator = Validator::make($request, [
+        return [
             'text' => ['required', 'min:3', 'max:512'],
-        ]);
-
-        $validator->validate();
-
-        return $validator->validated();
+        ];
     }
 }

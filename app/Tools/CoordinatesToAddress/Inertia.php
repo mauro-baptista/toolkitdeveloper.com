@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tools\Slugify;
+namespace App\Tools\CoordinatesToAddress;
 
 use App\Tools\InertiaContract;
 

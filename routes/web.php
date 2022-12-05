@@ -15,7 +15,7 @@ Route::group([
     'as' => 'tools.',
 ], function () {
     foreach (config('tools') as $tool => $data) {
-        Route::inertia('/' . $tool, $data['component'])->name($tool);
+        Route::inertia('/' . $tool, $data['component'], $data)->name($tool);
     }
     Route::post('/{tool}', ToolController::class)->name('handler');
 });

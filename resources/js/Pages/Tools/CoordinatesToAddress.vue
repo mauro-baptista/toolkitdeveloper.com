@@ -2,31 +2,37 @@
     <Layout>
         <Head>
             <title>Toolkit developer - {{ name }}</title>
-            <meta name="description" :content=description>
+            <meta name="description" :content=description >
         </Head>
 
         <Block
             :header=name
             :description=description
         >
-            <form @submit.prevent="submit">
+            <form @submit.prevent="submit" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <InputText
-                    v-model="form.text"
+                    v-model="form.latitude"
                     name="text"
-                    label="Your Text:"
-                    description="Add the text you want to create a slug for. E.g. Your post title"
-                    :error="form.errors.text"
+                    label="Latitude:"
+                    :error="form.errors.latitude"
                 />
-                <SubmitButton text="Generate" class="mt-8 w-full md:w-128" />
+                <InputText
+                    v-model="form.longitude"
+                    name="text"
+                    label="Longitude"
+                    :error="form.errors.longitude"
+                    class="mt-4 md:mt-0"
+                />
+                <SubmitButton text="Get Address" class="mt-8 w-full md:w-128" />
             </form>
 
             <BlockCopy
-                v-if="slug"
+                v-if="address"
                 class="mt-8"
-                header="Generated Slug"
-                :data="slug"
+                header="Address"
+                :data="address"
             >
-                {{ slug }}
+                {{ address }}
             </BlockCopy>
         </Block>
     </Layout>
@@ -45,16 +51,17 @@
     interface Props {
         name: String,
         description: String,
-        slug?: String,
+        address?: String,
     }
 
     defineProps<Props>()
 
     const form = useForm({
-        text: null,
+        latitude: 37.7056639,
+        longitude: -122.4634983,
     })
 
     function submit() {
-        form.post(route('tools.handler', {tool: 'slugify'}))
+        form.post(route('tools.handler', {tool: 'coordinates_to_address'}))
     }
 </script>
