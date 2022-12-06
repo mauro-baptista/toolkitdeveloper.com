@@ -2,6 +2,7 @@
 
 namespace App\Services\Geo;
 
+use App\Services\Geo\Exception\InvalidResponseException;
 use GuzzleHttp\Client;
 
 class GoogleMaps implements GeoService
@@ -21,9 +22,7 @@ class GoogleMaps implements GeoService
 
         $result = json_decode($content, true);
 
-        if (!isset($result['status']) && $result['status'] !== 'OK') {
-            //throw error
-        }
+        throw_if(!isset($result['status']) || $result['status'] !== 'OK', InvalidResponseException::class);
 
         return $result['results'];
     }

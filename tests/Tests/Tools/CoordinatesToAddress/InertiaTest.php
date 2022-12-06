@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Tests\Tools\Slugify;
+namespace Tests\Tests\Tools\CoordinatesToAddress;
 
-use App\Tools\Slugify\Inertia;
+use App\Tools\CoordinatesToAddress\Inertia;
 use Inertia\Response;
 use Tests\TestCase;
 
@@ -11,8 +11,8 @@ class InertiaTest extends TestCase
     /** @test */
     public function inertia_component()
     {
-        $inertia = (new Inertia('slugify'))->render([
-            'text' => 'sample-value'
+        $inertia = (new Inertia('coordinates_to_address'))->render([
+            'address' => 'sample-value'
         ]);
 
         $this->assertInstanceOf(Response::class, $inertia);

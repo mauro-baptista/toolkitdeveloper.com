@@ -9,6 +9,10 @@
             :header=name
             :description=description
         >
+            <Alert type="error" class="mb-4" v-if="form.errors.coordinates">
+                {{ form.errors.coordinates }}
+            </Alert>
+            <p class="mt-0.5 text-sm text-red-600" ></p>
             <form @submit.prevent="submit" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <InputText
                     v-model="form.latitude"
@@ -47,6 +51,7 @@
     import InputText from "../../Common/Form/InputText.vue"
     import SubmitButton from "../../Common/Form/SubmitButton.vue"
     import { Head } from '@inertiajs/inertia-vue3'
+    import Alert from "../../Common/Alert.vue";
 
     interface Props {
         name: String,
@@ -57,8 +62,8 @@
     defineProps<Props>()
 
     const form = useForm({
-        latitude: 37.7056639,
-        longitude: -122.4634983,
+        latitude: null,
+        longitude: null,
     })
 
     function submit() {

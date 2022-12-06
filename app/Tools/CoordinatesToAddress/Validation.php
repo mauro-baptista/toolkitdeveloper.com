@@ -9,8 +9,8 @@ class Validation extends ValidationContract
     public function rules(): array
     {
         return [
-            'latitude' => ['required', 'between:-90,90'],
-            'longitude' => ['required', 'between:-180,180'],
+            'latitude' => ['required', 'numeric', 'between:-90,90'],
+            'longitude' => ['required', 'numeric', 'between:-180,180'],
         ];
     }
 }
