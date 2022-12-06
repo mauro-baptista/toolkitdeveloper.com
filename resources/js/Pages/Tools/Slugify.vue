@@ -1,13 +1,13 @@
 <template>
     <Layout>
         <Head>
-            <title>Toolkit developer - Slugify</title>
-            <meta name="description" content="Easy and straight-forward tool to generate user friendly URL slugs">
+            <title>Toolkit developer - {{ name }}</title>
+            <meta name="description" :content=description>
         </Head>
 
         <Block
-            header="Slugify"
-            description="Easy and straight-forward tool to generate user friendly URL slugs"
+            :header=name
+            :description=description
         >
             <form @submit.prevent="submit">
                 <InputText
@@ -43,6 +43,8 @@
     import { Head } from '@inertiajs/inertia-vue3'
 
     interface Props {
+        name: String,
+        description: String,
         slug?: String,
     }
 
