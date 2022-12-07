@@ -14,7 +14,7 @@
 
     @foreach ($tools as $tool => $_)
         <url>
-            <loc>{{ route('tools.' . $tool, ['tool' => $tool]) }}</loc>
+            <loc>{{ route('tools.' . $tool) }}</loc>
             <lastmod>{{ now()->startOfMonth()->toAtomString() }}</lastmod>
             <priority>0.80</priority>
         </url>
